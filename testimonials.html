@@ -20,10 +20,8 @@
           <h2>Tell us about your experience with ABKR Infra.</h2>
           <p class="lead">Your review helps new customers understand the quality, communication, and delivery they can expect.</p>
         </div>
-        <form class="form card review-form" name="customer-review" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-lead-form>
+        <form class="form card review-form" name="customer-review" data-lead-form>
           <div class="card-body">
-            <input type="hidden" name="form-name" value="customer-review">
-            <label class="hidden-field">Do not fill this field<input name="bot-field"></label>
             <label>Name<input name="name" type="text" required></label>
             <label>Rating<select name="rating"><option>5/5 stars</option><option>4/5 stars</option><option>3/5 stars</option></select></label>
             <label>Review<textarea name="review" required></textarea></label>

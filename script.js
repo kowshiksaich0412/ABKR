@@ -34,12 +34,11 @@ document.querySelectorAll("form[data-lead-form]").forEach((form) => {
     event.preventDefault();
     const status = form.querySelector("[data-form-status]");
     const data = new FormData(form);
-    const body = new URLSearchParams(data).toString();
     const isGitHubPages = window.location.hostname.endsWith("github.io");
 
     const sendToWhatsApp = () => {
       const fields = Array.from(data.entries())
-        .filter(([key, value]) => key !== "form-name" && key !== "bot-field" && String(value).trim())
+        .filter(([, value]) => String(value).trim())
         .map(([key, value]) => `${key}: ${value}`)
         .join("\n");
       const message = encodeURIComponent(`New website inquiry\n${fields}`);
@@ -58,25 +57,6 @@ document.querySelectorAll("form[data-lead-form]").forEach((form) => {
       return;
     }
 
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Form submission failed");
-        }
-        if (status) {
-          status.textContent = "Thank you. Your message has been received.";
-        }
-        form.reset();
-      })
-      .catch(() => {
-        if (status) {
-          status.textContent = "Opening WhatsApp to complete your inquiry.";
-        }
-        sendToWhatsApp();
-      });
+    sendToWhatsApp();
   });
 });

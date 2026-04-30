@@ -508,10 +508,6 @@ h3 {
   font-weight: 800;
 }
 
-.hidden-field {
-  display: none !important;
-}
-
 .form input,
 .form textarea,
 .form select {
