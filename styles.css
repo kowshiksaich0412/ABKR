@@ -654,6 +654,29 @@ h3 {
   .footer-grid {
     grid-template-columns: 1fr 1fr;
   }
+
+  .hero-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .quote-strip .container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero {
+    min-height: 520px;
+  }
+
+  .section {
+    padding: 72px 0;
+  }
 }
 
 @media (max-width: 680px) {
